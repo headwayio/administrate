@@ -24,5 +24,9 @@ By default, the input is a text field.
   <%= f.label label_text %>
 </div>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute %>
+  <% if field.attribute == :phone && defined?(Phonelib) %>
+    <%= f.text_field field.attribute, value: Phonelib.parse(f.object.phone).national %>
+  <% else %>
+    <%= f.text_field field.attribute %>
+  <% end %>
 </div>

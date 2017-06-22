@@ -17,7 +17,12 @@ By default, the input is a text field that is augmented with [DateTimePicker].
 %>
 
 <div class="field-unit__label">
-  <%= f.label field.attribute %>
+  <% label_text = t(
+    "helpers.label.#{f.object.class.name.underscore}.#{field.attribute}",
+    default: field.attribute.to_s,
+  ).titleize %>
+
+  <%= f.label label_text %>
 </div>
 <div class="field-unit__field">
   <%= f.text_field field.attribute, class: "datetimepicker" %>

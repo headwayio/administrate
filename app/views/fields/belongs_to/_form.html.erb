@@ -17,7 +17,12 @@ that displays all possible records to associate with.
 %>
 
 <div class="field-unit__label">
-  <%= f.label field.permitted_attribute %>
+  <% label_text = t(
+    "helpers.label.#{f.object.class.name.underscore}.#{field.permitted_attribute}",
+    default: field.permitted_attribute.to_s,
+  ).titleize %>
+
+  <%= f.label label_text %>
 </div>
 <div class="field-unit__field">
   <%= f.select(field.permitted_attribute) do %>

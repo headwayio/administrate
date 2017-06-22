@@ -19,7 +19,12 @@ so this partial renders a message to that effect.
 %>
 
 <div class="field-unit__label">
-  <%= f.label field.name %>
+  <% label_text = t(
+    "helpers.label.#{f.object.class.name.underscore}.#{field.name}",
+    default: field.name.to_s,
+  ).titleize %>
+
+  <%= f.label label_text %>
 </div>
 
 <div class="field-unit__field">

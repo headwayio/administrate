@@ -22,7 +22,6 @@ The form will be rendered as nested_from to parent relationship.
     <% field.nested_form.attributes.each do |attribute| -%>
       <div class="field-unit field-unit--<%= attribute.html_class %>">
         <%= render_field attribute, f: has_one_f %>
-        <%= has_one_f.error attribute.attribute %>
       </div>
     <% end -%>
   </fieldset>

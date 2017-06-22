@@ -20,7 +20,12 @@ and is augmented with [Selectize].
 %>
 
 <div class="field-unit__label">
-  <%= f.label field.attribute_key, field.attribute %>
+  <% label_text = t(
+    "helpers.label.#{f.object.class.name.underscore}.#{field.attribute_key}",
+    default: field.attribute.to_s,
+  ).titleize %>
+
+  <%= f.label field.attribute_key, label_text %>
 </div>
 <div class="field-unit__field">
   <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>

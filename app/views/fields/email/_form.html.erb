@@ -21,8 +21,4 @@ By default, the input is a text box.
     default: field.attribute.to_s,
   ).titleize %>
 
-  <%= f.label label_text %>
-</div>
-<div class="field-unit__field">
-  <%= f.email_field field.attribute %>
-</div>
+<%= f.input field.attribute, as: :email, label: label_text  %>

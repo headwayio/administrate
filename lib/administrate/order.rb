@@ -6,6 +6,24 @@ module Administrate
     end
 
     def apply(relation)
+      if attribute.match?(/\./)
+        join_table, join_attribute = attribute.split('.')
+
+        return(
+          relation.
+            joins(join_table.to_sym).
+            merge(
+              join_table.
+                camelize.
+                singularize.
+                constantize.
+                order(
+                  join_attribute.to_sym => direction.to_sym,
+                ),
+            )
+        )
+      end
+
       return order_by_association(relation) unless
         reflect_association(relation).nil?
 

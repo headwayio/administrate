@@ -6,7 +6,7 @@ module Administrate
     end
 
     def apply(relation)
-      if attribute.to_s.match?(/\./)
+      if attribute.to_s.include?(".")
         join_table, join_attribute = attribute.split(".")
 
         return(

@@ -21,11 +21,7 @@ module Administrate
         ordered_by?(attr) && order.direction
       end
 
-      delegate :ordered_by?, to: :order
-
-      def order_params_for(attr, key: resource_name)
-        { key => order.order_params_for(attr) }
-      end
+      delegate :ordered_by?, :order_params_for, to: :order
 
       private
 

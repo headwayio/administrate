@@ -4,12 +4,11 @@ class LogEntryDashboard < Administrate::BaseDashboard
   ATTRIBUTES = %i(action logeable).freeze
 
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
     action: Field::String,
     logeable: Field::Polymorphic.with_options(classes: [Customer, ::Order]),
   }.freeze
 
-  COLLECTION_ATTRIBUTES = [:id] + ATTRIBUTES
+  COLLECTION_ATTRIBUTES = ATTRIBUTES
   FORM_ATTRIBUTES = ATTRIBUTES
   SHOW_PAGE_ATTRIBUTES = ATTRIBUTES
 
